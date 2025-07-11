@@ -1,4 +1,4 @@
-# Next.js Starter for WordPress Headless CMS
+# Next.js Starter for WordPress Headless CM
 
 > [Watch the Demo Video](https://www.youtube.com/watch?v=JZc1-BcOvYw)
 >
