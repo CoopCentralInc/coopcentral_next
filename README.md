@@ -136,11 +136,7 @@ All functions use the custom `WordPressAPIError` class for consistent error hand
 
 ```typescript
 class WordPressAPIError extends Error {
-  constructor(
-    message: string,
-    public status: number,
-    public endpoint: string,
-  ) {
+  constructor(message: string, public status: number, public endpoint: string) {
     super(message);
     this.name = "WordPressAPIError";
   }
@@ -324,7 +320,7 @@ Located in `components/posts/search-input.tsx`, the SearchInput component provid
 // Usage example
 import { SearchInput } from "@/components/posts/search-input";
 
-<SearchInput defaultValue={search} />
+<SearchInput defaultValue={search} />;
 ```
 
 Features:
