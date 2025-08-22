@@ -33,6 +33,7 @@ async function wordpressFetch<T>(url: string): Promise<T> {
   const userAgent = "Next.js WordPress Client";
 
   const response = await fetch(url, {
+    next: { revalidate: 60 },
     headers: {
       "User-Agent": userAgent,
     },
@@ -46,7 +47,9 @@ async function wordpressFetch<T>(url: string): Promise<T> {
     );
   }
 
-  return response.json();
+  const res = response.json();
+
+  return res;
 }
 
 export async function getAllPosts(filterParams?: {

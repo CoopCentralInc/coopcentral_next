@@ -64,6 +64,7 @@ export default async function Home() {
       };
     })
   );
+
   const featured_media = page.featured_media
     ? (await getFeaturedMediaById(page.featured_media)).source_url
     : "/default-og-image.png";
