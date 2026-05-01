@@ -25,7 +25,7 @@ export async function generateMetadata({
   }
 
   const featured_media_url = product.featured_media
-    ? (await getFeaturedMediaById(product.featured_media)).source_url
+    ? (await getFeaturedMediaById(product.featured_media))?.source_url ?? "/default-og-image.png"
     : "/default-og-image.png";
 
   const productTitle = product.title?.rendered || "Producto";

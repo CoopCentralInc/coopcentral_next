@@ -20,7 +20,7 @@ export default async function ProductsCover({ page }: Props) {
           <div className={styles.media}>
             <div className={styles.mediaLogo}>
               <Image
-                src={media.source_url}
+                src={media?.source_url ?? ""}
                 alt="Logo productos"
                 width={800}
                 height={800}

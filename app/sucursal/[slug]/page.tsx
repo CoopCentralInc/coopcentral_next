@@ -39,7 +39,7 @@ export async function generateMetadata({
 
   const { title, featured_media, meta_box } = sucursal as any;
   const featured_media_url = featured_media
-    ? (await getFeaturedMediaById(featured_media)).source_url
+    ? (await getFeaturedMediaById(featured_media))?.source_url ?? "/default-og-image.png"
     : "/default-og-image.png";
 
   const {
@@ -158,7 +158,7 @@ export default async function Page({
       <section className={styles.section}>
         <div className={styles.media}>
           <Image
-            src={image.source_url}
+            src={image?.source_url ?? ""}
             alt={`Sucursal ${title.rendered} - Coopcentral`}
             width={1920}
             height={1080}

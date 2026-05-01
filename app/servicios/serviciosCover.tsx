@@ -18,7 +18,7 @@ export default async function ServiceCover({ page }: Props) {
         <div className={styles.media}>
           <div className={styles.mediaLogo}>
             <Image
-              src={media.source_url}
+              src={media?.source_url ?? ""}
               alt={service_cover_title}
               width={1920}
               height={1080}

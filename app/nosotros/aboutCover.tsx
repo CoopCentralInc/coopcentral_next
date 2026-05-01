@@ -19,7 +19,7 @@ export default async function AboutCover({ page }: Props) {
         <div className={styles.mediaWrapper}>
           <div className={styles.media}>
             <Image
-              src={featured_media.source_url}
+              src={featured_media?.source_url ?? ""}
               alt="Sobre nosotros - Coopcentral"
               width={1920}
               height={1080}

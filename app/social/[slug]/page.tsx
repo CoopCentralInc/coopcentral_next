@@ -34,7 +34,7 @@ export async function generateMetadata({
 
   // Obtener imagen destacada o usar imagen por defecto
   const featured_media_url = post.featured_media
-    ? (await getFeaturedMediaById(post.featured_media)).source_url
+    ? (await getFeaturedMediaById(post.featured_media))?.source_url ?? "/default-og-image.png"
     : "/default-og-image.png";
 
   // Generar imagen OG dinámica o usar imagen destacada

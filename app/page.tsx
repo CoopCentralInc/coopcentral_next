@@ -22,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
   // Obtener datos de la página
   const page = await getPageBySlug("coopcentral");
   const featured_media_url = page.featured_media
-    ? (await getFeaturedMediaById(page.featured_media)).source_url
+    ? (await getFeaturedMediaById(page.featured_media))?.source_url ?? "/default-og-image.png"
     : "/default-og-image.png"; // Proporciona una imagen por defecto
 
   return {
@@ -60,13 +60,13 @@ export default async function Home() {
       const featured_media = await getFeaturedMediaById(slide.featured_media);
       return {
         ...slide,
-        featured_media: featured_media.source_url,
+        featured_media: featured_media?.source_url ?? "",
       };
     })
   );
 
   const featured_media = page.featured_media
-    ? (await getFeaturedMediaById(page.featured_media)).source_url
+    ? (await getFeaturedMediaById(page.featured_media))?.source_url ?? "/default-og-image.png"
     : "/default-og-image.png";
   const { title, content, meta_box } = page;
 

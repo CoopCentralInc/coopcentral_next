@@ -25,7 +25,7 @@ export default async function contactCover({ page }: Props) {
     <section className={styles.section}>
       <div className={styles.mediaLogo}>
         <Image
-          src={featured_media.source_url}
+          src={featured_media?.source_url ?? ""}
           alt="Contacto Coopcentral"
           width={1920}
           height={1080}

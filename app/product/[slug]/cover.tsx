@@ -19,7 +19,7 @@ export default async function Cover({ page }: Props) {
         <div className={styles.media}>
           <div className={styles.logo}>
             <Image
-              src={featured_media.source_url}
+              src={featured_media?.source_url ?? ""}
               alt={product_cover_title}
               width={1920}
               height={1080}

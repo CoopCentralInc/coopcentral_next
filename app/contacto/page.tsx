@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
   // Obtener datos de la página
   const page = await getPageBySlug("contacto");
   const featured_media_url = page.featured_media
-    ? (await getFeaturedMediaById(page.featured_media)).source_url
+    ? (await getFeaturedMediaById(page.featured_media))?.source_url ?? "/default-og-image.png"
     : "/default-og-image.png"; // Proporciona una imagen por defecto
 
   return {

@@ -19,7 +19,7 @@ export default async function ServicioSocialCover({ page }: Props) {
         <div className={styles.cardImage}>
           <div className={styles.image}>
             <Image
-              src={image.source_url}
+              src={image?.source_url ?? ""}
               alt={title}
               width={1920}
               height={1080}
