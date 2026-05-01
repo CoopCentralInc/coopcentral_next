@@ -15,7 +15,7 @@ interface Props {
 
 export default async function Post({ post }: Props) {
   const featuredMedia = post.featured_media
-    ? await getFeaturedMediaById(post.featured_media)
+    ? await getFeaturedMediaById(post.featured_media).catch(() => null)
     : null;
 
   const date = new Date(post.date).toLocaleDateString("es-ES", {
@@ -24,7 +24,7 @@ export default async function Post({ post }: Props) {
     year: "numeric",
   });
   const category = post.categories
-    ? await getCategoryById(post.categories[0])
+    ? await getCategoryById(post.categories[0]).catch(() => null)
     : null;
   return (
     <article className={styles.section}>
