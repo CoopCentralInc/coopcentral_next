@@ -36,6 +36,15 @@ const nextConfig: NextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
   },
+  async rewrites() {
+    const wpBase = (process.env.WORDPRESS_URL || "https://app.coopcentral.do").replace(/\/$/, "");
+    return [
+      {
+        source: "/wp-content/:path*",
+        destination: `${wpBase}/wp-content/:path*`,
+      },
+    ];
+  },
   async redirects() {
     return [
       {
