@@ -11,14 +11,13 @@ import type { Metadata } from "next";
 import Post from "@/components/post";
 
 export async function generateStaticParams() {
-  const posts = await getAllPostsSimple();
-  const pages = await getAllPages();
-
-  const data = [...posts, ...pages];
-
-  return data.map((post) => ({
-    slug: post.slug,
-  }));
+  try {
+    const posts = await getAllPostsSimple();
+    const pages = await getAllPages();
+    return [...posts, ...pages].map((post) => ({ slug: post.slug }));
+  } catch {
+    return [];
+  }
 }
 
 export async function generateMetadata({

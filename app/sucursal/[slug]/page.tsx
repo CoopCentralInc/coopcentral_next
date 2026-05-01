@@ -15,11 +15,12 @@ import {
 import { Metadata } from "next";
 
 export async function generateStaticParams() {
-  const sucursales = await getAllSucursals();
-
-  return sucursales.map((sucursal) => ({
-    slug: sucursal.slug,
-  }));
+  try {
+    const sucursales = await getAllSucursals();
+    return sucursales.map((sucursal) => ({ slug: sucursal.slug }));
+  } catch {
+    return [];
+  }
 }
 
 export async function generateMetadata({
