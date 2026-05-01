@@ -1,21 +1,29 @@
-const hostname = process.env.NEXT_PUBLIC_WORDPRESS_HOSTNAME;
-
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+
+const WP_HOSTNAMES = [
+  process.env.NEXT_PUBLIC_WORDPRESS_HOSTNAME,
+  "app.coopcentral.do",
+  "coopcentral.do",
+  "www.coopcentral.do",
+  "coopcentral-d7hfezdhekd3ejgq.westus2-01.azurewebsites.net",
+].filter(Boolean) as string[];
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
 export function getURL(path = "") {
-  const isExternal = path.includes("http");
+  if (!path.includes("http")) return path || "/";
 
-  if (isExternal) {
+  try {
     const url = new URL(path);
-    if (url.hostname === hostname) {
+    if (WP_HOSTNAMES.includes(url.hostname)) {
       return url.pathname;
     }
+  } catch {
+    // URL inválida, devolver tal cual
   }
 
-  return `${path || "/"}`;
+  return path;
 }

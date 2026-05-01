@@ -27,6 +27,12 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
+        hostname: `coopcentral-d7hfezdhekd3ejgq.westus2-01.azurewebsites.net`,
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
         hostname: `certificaciones.uaf.gob.do`,
         port: "",
         pathname: "/**",
