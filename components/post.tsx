@@ -5,7 +5,6 @@ import Image from "next/image";
 import { CalendarIcon, UserIcon } from "./ui/icons";
 import Link from "next/link";
 import {
-  getAuthorById,
   getCategoryById,
   getFeaturedMediaById,
 } from "@/lib/wordpress";
@@ -19,7 +18,6 @@ export default async function Post({ post }: Props) {
     ? await getFeaturedMediaById(post.featured_media)
     : null;
 
-  const author = post?.author ? await getAuthorById(post.author) : null;
   const date = new Date(post.date).toLocaleDateString("es-ES", {
     month: "long",
     day: "numeric",

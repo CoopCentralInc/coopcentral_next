@@ -19,7 +19,8 @@ const API_URL =
 
 function getUrl(path: string, query?: Record<string, any>) {
   const params = query ? querystring.stringify(query) : null;
-  return `${API_URL}${path}${params ? `?${params}` : ""}`;
+  const base = API_URL.replace(/\/$/, "");
+  return `${base}${path}${params ? `?${params}` : ""}`;
 }
 
 class WordPressAPIError extends Error {

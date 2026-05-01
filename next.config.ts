@@ -21,6 +21,12 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
+        hostname: `app.coopcentral.do`,
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
         hostname: `certificaciones.uaf.gob.do`,
         port: "",
         pathname: "/**",
