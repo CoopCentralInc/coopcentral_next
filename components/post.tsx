@@ -15,7 +15,7 @@ interface Props {
 
 export default async function Post({ post }: Props) {
   const featuredMedia = post.featured_media
-    ? await getFeaturedMediaById(post.featured_media).catch(() => null)
+    ? await getFeaturedMediaById(post.featured_media)
     : null;
 
   const date = new Date(post.date).toLocaleDateString("es-ES", {

@@ -275,9 +275,9 @@ export async function getPostsByTagSlug(tagSlug: string): Promise<Post[]> {
   return wordpressFetch<Post[]>(url);
 }
 
-export async function getFeaturedMediaById(id: number): Promise<FeaturedMedia> {
+export async function getFeaturedMediaById(id: number): Promise<FeaturedMedia | null> {
   const url = getUrl(`/wp-json/wp/v2/media/${id}`);
-  return wordpressFetch<FeaturedMedia>(url);
+  return wordpressFetch<FeaturedMedia>(url).catch(() => null);
 }
 
 export async function searchCategories(query: string): Promise<Category[]> {
