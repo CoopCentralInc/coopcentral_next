@@ -15,6 +15,7 @@ import Modal from "@/components/modal";
 import Footer from "@/components/footer";
 import Chatbot from "@/components/chatbot/chatbot";
 import icon from "@/public/favicon.ico";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const font = FontSans({
   subsets: ["latin"],
@@ -78,17 +79,19 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const settings = await getSettings();
-  const menuHeader = await getMenu("main");
-  const menuFooter = await getMenu("footer");
+  const settings = await getSettings().catch(() => null);
+  const menuHeader = await getMenu("main").catch(() => null);
+  const menuFooter = await getMenu("footer").catch(() => null);
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <head></head>
+      <head>
+        <GoogleAnalytics />
+      </head>
       <body
         className={`${cn(
           "min-h-screen font-sans antialiased",
-          font.variable
+          font.variable,
         )} body-post`}
       >
         <ThemeProvider

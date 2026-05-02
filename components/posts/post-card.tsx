@@ -14,7 +14,7 @@ export async function PostCard({ post }: { post: Post }) {
   const media = post.featured_media
     ? await getFeaturedMediaById(post.featured_media)
     : null;
-  const author = post.author ? await getAuthorById(post.author) : null;
+  const author = post.author ? await getAuthorById(post.author).catch(() => null) : null;
   const date = new Date(post.date).toLocaleDateString("en-US", {
     month: "long",
     day: "numeric",
